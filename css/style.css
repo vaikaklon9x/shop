@@ -3,6 +3,7 @@
 	--navbar-height: 24px;
 	--header-height: 120px;
 	--header-share: calc(var(--header-height) - var(--navbar-height));
+	--header-sort-bar-height: 46px;
 }
 *{
 	box-sizing:inherit;
@@ -12,11 +13,6 @@ html{
 	line-height: 1.6rem;
 	font-family: 'Roboto',sans-serif;
 	box-sizing: border-box;
-}
-.grid{
-	width: 1200px;
-	max-width: 100%;
-	margin: 0 auto;
 }
 .grid__full-width{	
 	width: 100%;
@@ -388,6 +384,13 @@ html{
 	align-items: center;
 	margin: 0 8px;
 }
+.header__mobile-search{
+	display: none;
+}
+.header__mobile-search-icon{
+	font-size: 2.6rem;
+	color: white;
+}
 .header__logo{
 	width: 200px;
 }
@@ -624,7 +627,7 @@ html{
 .header__cart-list-item{
 	padding-left: 0;
 	list-style: none;
-	height: 30vh;//view port height
+	max-height: 30vh;//view port height
 	overflow-y: auto;
 }
 .header__cart-item{
@@ -773,6 +776,51 @@ html{
 }
 .header__cart-view-cart:hover{
 	background-color: #f9a898;
+}
+.header__sort-bar{
+	position: fixed;
+	top: var(--header-height);
+	left: 0;
+	right: 0;
+	height: var(--header-sort-bar-height);
+	margin-top: 0;
+	padding: 0 2px;
+	background-color: white;
+	display: flex;
+	list-style: none;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	display: none;
+}
+.header__sort-item{
+	flex: 1;
+}
+.header__sort-link{
+	text-decoration: none;
+	color: black;
+	font-size: 1.4rem;
+	display: block;
+	height: 100%;
+	line-height: var(--header-sort-bar-height);
+	margin: 0;
+	padding-left: 0;
+	text-align: center;
+	position: relative;
+}
+.header__sort-link::before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0;
+	height: 60%;
+	border-left: 1px solid #e5e5ee;
+	transform: translateY(-50%);
+}
+.header__sort-item:first-child .header__sort-link::before{
+	display: none;
+}
+.header__sort-item--active .header__sort-link{
+	color:#fb5533;
 }
 .app__container{
 	background-color: #f5f5f5;
@@ -1146,6 +1194,7 @@ i.home-product-item__like-icon-fill{
 }
 .home-product__pagination{
 	margin: 48px 0 32px 0;
+	padding-left: 0;
 }
 .footer{
 	padding-top: 12px;
